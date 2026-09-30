@@ -1,0 +1,68 @@
+{
+  "cases": {
+    "math/mat4_multiply": {
+      "ns_per_op": 8395.706897537257,
+      "noise": 0.45158547373481533
+    },
+    "math/vec3_ops": {
+      "ns_per_op": 1030.1535179628047,
+      "noise": 1.2172404962247627
+    },
+    "math/camera_view_matrix": {
+      "ns_per_op": 2870.5448718168414,
+      "noise": 5.2994048799770095
+    },
+    "physics/ray_model": {
+      "ns_per_op": 2133400.8810147312,
+      "noise": 30.876637955467466
+    },
+    "physics/sphere_model": {
+      "ns_per_op": 2727635.35915488,
+      "noise": 4.356069061305316
+    },
+    "physics/voxel_body_move": {
+      "ns_per_op": 5222.772726979614,
+      "noise": 23.909495992614488
+    },
+    "render/cubes_grid_solid": {
+      "ns_per_op": 1872912.2800817876,
+      "noise": 0.8367211132353783
+    },
+    "render/cubes_grid_textured": {
+      "ns_per_op": 2101487.394993608,
+      "noise": 5.211594850232915
+    },
+    "render/spheres": {
+      "ns_per_op": 12345540.53863158,
+      "noise": 0.6018149043291845
+    },
+    "render/voxel_world": {
+      "ns_per_op": 3375671.1398370117,
+      "noise": 6.23410708661187
+    },
+    "voxel/build_mesh": {
+      "ns_per_op": 3587251.573027867,
+      "noise": 3.9461895612932527
+    },
+    "voxel/raycast": {
+      "ns_per_op": 11554.634147437244,
+      "noise": 7.4215814496132655
+    },
+    "voxel/aabb_query": {
+      "ns_per_op": 3734.7760014235973,
+      "noise": 1.3302002624020508
+    },
+    "cell_grid/visible_cells": {
+      "ns_per_op": 2731545.9768127264,
+      "noise": 2.503950238661368
+    },
+    "cell_grid/render": {
+      "ns_per_op": 6174293.651600324,
+      "noise": 1.7518872968802384
+    },
+    "cell_grid/collide_sphere": {
+      "ns_per_op": 1730.4258060551458,
+      "noise": 1.765368241781443
+    }
+  }
+}

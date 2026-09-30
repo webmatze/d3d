@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+# Starts the game with the DragonRuby from Smaug.toml (like `smaug run`), but
+# first makes sure metadata/game_metadata.txt has shaders=true. Smaug rewrites
+# that file from a fixed template on run/build and drops the flag, which the
+# Post-FX demo needs.
+#
+#   bin/run [extra dragonruby args]
+require "tmpdir"
+require_relative "../bench/dragonruby"
+
+meta = File.join(Bench::DragonRuby::ROOT, "metadata", "game_metadata.txt")
+text = File.read(meta)
+unless text.match?(/^shaders=true\s*$/)
+  text = text.gsub(/^shaders=.*\n?/, "")
+  File.write(meta, text.chomp + "\nshaders=true\n")
+end
+
+# DragonRuby runs shadercross through the shell without quoting its install
+# path, which breaks on Smaug's "Application Support" dir. Start it through a
+# space-free symlink; DragonRuby keeps the symlinked path as its working dir.
+bin = Bench::DragonRuby.bin
+if bin.include?(" ")
+  install = File.dirname(bin)
+  link = File.join(Dir.tmpdir, "d3d-#{File.basename(install)}")
+  File.unlink(link) if File.symlink?(link) && File.readlink(link) != install
+  File.symlink(install, link) unless File.symlink?(link)
+  bin = File.join(link, File.basename(bin))
+end
+
+# DragonRuby changes into its own directory, so pass the game dir absolute.
+exec(bin, Bench::DragonRuby::ROOT, *ARGV)

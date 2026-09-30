@@ -1,0 +1,16 @@
+builds/
+logs/
+exceptions/
+errors/last.txt
+.claude/worktrees/
+.claude/settings.local.json
+
+# Shader binaries DragonRuby compiles next to the .hlsl sources
+shaders/**/*.spv
+shaders/**/*.msl
+shaders/**/*.dxil
+
+# Built C extension (bin/build-ext); only the source is committed
+native/
+
+.DS_Store
